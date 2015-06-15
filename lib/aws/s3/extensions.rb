@@ -76,7 +76,7 @@ class String
   
   # All paths in in S3 have to be valid unicode so this takes care of 
   # cleaning up any strings that aren't valid utf-8 according to String#valid_utf8?
-  if RUBY_VERSION >= '1.9'
+  #if RUBY_VERSION >= '1.9'
     def remove_extended!
       sanitized_string = ''
       each_byte do |byte|
@@ -85,11 +85,11 @@ class String
       end
       sanitized_string
     end
-  else
-    def remove_extended!
-      gsub!(/[\x80-\xFF]/) { "%02X" % $&[0] }
-    end
-  end
+  #else
+  #  def remove_extended!
+  #    gsub!(/[\x80-\xFF]/) { "%02X" % $&[0] }
+  #  end
+  #end
   
   def remove_extended
     dup.remove_extended!
